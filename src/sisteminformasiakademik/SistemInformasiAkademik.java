@@ -19,6 +19,7 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     public SistemInformasiAkademik() {
         initComponents();
         showData();
+        searchScore("");
     }
 
     /**
@@ -544,19 +545,6 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     private void searchButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton2ActionPerformed
-//        String[] col = {"NISN", "Mapel", "Nilai"};
-//        ArrayList<Nilai> nilai = new Nilai().search(txtSearch2.getText());
-//        Object rowData[] = new Object[3];
-//        
-//        scoreTable.setModel(new DefaultTableModel(new Object[][] {}, col));
-//        
-//        for(Nilai n : nilai){
-//            rowData[0] = n.getSiswa().getId();
-//            rowData[1] = n.getMapel().getIdMapel();
-//            rowData[2] = n.getNilai();
-//            
-//            ((DefaultTableModel)scoreTable.getModel()).addRow(rowData);
-//        }
         searchScore(txtSearch2.getText());
     }//GEN-LAST:event_searchButton2ActionPerformed
 
@@ -575,19 +563,13 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     private void saveButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton2ActionPerformed
         
         Siswa siswa = new Siswa();
-        siswa.setId(txtNISN.getText());
+        siswa.setId(txtNISN2.getText());
         Pelajaran mapel = new Pelajaran();
         mapel.setIdMapel(cbMapel.getSelectedItem().toString());
         
         Nilai nilai = new Nilai(Double.parseDouble(txtNilai.getText()), siswa, mapel);
-        
-        
-        if(scoreTable.getSelectionModel().isSelectionEmpty()){
-            nilai.insertNilai();
-        } else {
-            nilai.updateNilai();
-        }
-        
+
+        nilai.insertNilai();
         resetForm2();
         searchScore(siswa.getId());
     }//GEN-LAST:event_saveButton2ActionPerformed

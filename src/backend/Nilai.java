@@ -22,11 +22,30 @@ public class Nilai {
         this.mapel = mapel;
     }
     
-    public void insertNilai(){
+    public void insertNilai() {
         String sql = "INSERT INTO nilai VALUES ('"+mapel.getIdMapel()+"', '"+siswa.getId()+"', '"+this.nilai+"')";
-        DBHelper.insertQueryGetId(sql);
+        
+        if(isDuplicate()) updateNilai();
+        else DBHelper.executeQuery(sql);
         
         this.nilai = nilai;
+    }
+    
+    public boolean isDuplicate(){
+        boolean isDuplicate=false;
+        String sql = "SELECT COUNT(nilai_angka) AS rowcount FROM nilai WHERE nisn='"+siswa.getId()+"' AND kode_mapel='"+mapel.getIdMapel()+"'";
+        ResultSet rs = DBHelper.selectQuery(sql);
+
+        try {
+            rs.next();
+            isDuplicate = rs.getInt("rowcount") > 0;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(sql);
+        }
+        
+        return isDuplicate;
     }
     
     public void updateNilai(){
@@ -52,7 +71,7 @@ public class Nilai {
     
     public ArrayList<Nilai> search(String Keyword){
         ArrayList<Nilai> listNilai = new ArrayList();
-        String sql = "SELECT * FROM nilai WHERE nisn LIKE '%"+Keyword+"%'";
+        String sql = "SELECT * FROM nilai WHERE nisn LIKE '%"+Keyword+"%' ORDER BY nisn, kode_mapel";
         ResultSet rs = DBHelper.selectQuery(sql);
         
         try {
