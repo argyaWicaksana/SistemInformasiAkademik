@@ -6,6 +6,7 @@ package sisteminformasiakademik;
 import backend.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -20,6 +21,7 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
         initComponents();
         showData();
         searchScore("");
+        searchTeacher("");
     }
 
     /**
@@ -73,6 +75,31 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
         txtSearch2 = new javax.swing.JTextField();
         searchButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        txtNIP = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtNama1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtAlamat1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        radioL1 = new javax.swing.JRadioButton();
+        radioP1 = new javax.swing.JRadioButton();
+        txtTglLahir1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        saveButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        txtSearch1 = new javax.swing.JTextField();
+        searchButton1 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        teacherTable = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        listMapel = new javax.swing.JList<>();
+        jLabel14 = new javax.swing.JLabel();
+        cbMapel1 = new javax.swing.JComboBox<>();
+        addButton = new javax.swing.JButton();
+        delGuruMapel = new javax.swing.JButton();
+        DelTeacherBtn = new javax.swing.JButton();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -238,10 +265,10 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
                             .addComponent(txtKelas)))
                     .addComponent(deleteButton)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchButton)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -250,12 +277,12 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
                         .addComponent(saveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(txtNISN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -291,10 +318,10 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(cb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Siswa", jPanel1);
@@ -377,7 +404,7 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
                         .addComponent(txtSearch2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,10 +431,232 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
                     .addComponent(searchButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Nilai", jPanel2);
+
+        jLabel11.setText("NIP");
+
+        txtNIP.setToolTipText("");
+        txtNIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNIPActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Nama");
+
+        txtNama1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNama1ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Alamat");
+
+        txtAlamat1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlamat1ActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Jenis Kelamin");
+
+        radioL1.setText("Laki - laki");
+        radioL1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioL1ActionPerformed(evt);
+            }
+        });
+
+        radioP1.setText("Perempuan");
+        radioP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioP1ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Tgl Lahir");
+
+        saveButton1.setText("Save");
+        saveButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Reset");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        searchButton1.setText("Search");
+        searchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton1ActionPerformed(evt);
+            }
+        });
+
+        teacherTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "NIP", "Nama"
+            }
+        ));
+        teacherTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                teacherTableMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(teacherTable);
+
+        listMapel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listMapelMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(listMapel);
+
+        jLabel14.setText("Mapel");
+
+        cbMapel1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BI", "BIG", "IPA", "MM" }));
+        cbMapel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMapel1ActionPerformed(evt);
+            }
+        });
+
+        addButton.setText("Add");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
+        delGuruMapel.setText("Delete");
+        delGuruMapel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delGuruMapelActionPerformed(evt);
+            }
+        });
+
+        DelTeacherBtn.setText("Delete");
+        DelTeacherBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DelTeacherBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(saveButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel12)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel16))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNIP)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(radioL1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(radioP1))
+                                    .addComponent(txtNama1)
+                                    .addComponent(txtTglLahir1)
+                                    .addComponent(txtAlamat1)))
+                            .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jLabel14))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(delGuruMapel))
+                                    .addComponent(cbMapel1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(searchButton1)
+                                .addGap(78, 78, 78))))
+                    .addComponent(DelTeacherBtn))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(txtNIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(txtNama1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(txtAlamat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(radioL1)
+                            .addComponent(radioP1))
+                        .addGap(13, 13, 13)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(txtTglLahir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbMapel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton1)
+                    .addComponent(jButton2)
+                    .addComponent(addButton)
+                    .addComponent(delGuruMapel))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(DelTeacherBtn)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Guru", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -561,7 +810,6 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     }//GEN-LAST:event_scoreTableMouseClicked
 
     private void saveButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton2ActionPerformed
-        
         Siswa siswa = new Siswa();
         siswa.setId(txtNISN2.getText());
         Pelajaran mapel = new Pelajaran();
@@ -578,6 +826,126 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
         resetForm();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtNIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNIPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNIPActionPerformed
+
+    private void txtNama1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNama1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNama1ActionPerformed
+
+    private void txtAlamat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlamat1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlamat1ActionPerformed
+
+    private void radioL1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioL1ActionPerformed
+        radioP1.setSelected(false);
+    }//GEN-LAST:event_radioL1ActionPerformed
+
+    private void radioP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioP1ActionPerformed
+        radioL1.setSelected(false);
+    }//GEN-LAST:event_radioP1ActionPerformed
+
+    private void saveButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton1ActionPerformed
+        Guru guru = new Guru();
+        guru.setId(txtNIP.getText());
+        guru.setName(txtNama1.getText());
+        guru.setAddress(txtAlamat1.getText());
+        guru.setBirthDate(txtTglLahir1.getText());
+        if(radioL1.isSelected()) guru.setGender('L');
+        else guru.setGender('P');
+        
+        if(teacherTable.getSelectionModel().isSelectionEmpty()){
+            guru.save();
+        } else {
+            guru.update();
+        }
+        searchTeacher("");
+        resetForm3();
+    }//GEN-LAST:event_saveButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        resetForm3();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
+        searchTeacher(txtSearch1.getText());
+    }//GEN-LAST:event_searchButton1ActionPerformed
+
+    private void teacherTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teacherTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel)teacherTable.getModel();
+        
+        int row = teacherTable.getSelectedRow();
+        String nip = model.getValueAt(row, 0).toString();
+        Guru guru = new Guru().getById(nip);
+        
+        txtNIP.setText(guru.getId());
+        txtNama1.setText(guru.getName());
+        txtAlamat1.setText(guru.getAddress());
+        txtTglLahir1.setText(guru.getBirthDate());
+        
+        if(guru.getGender() == 'L'){
+            radioL1.setSelected(true);
+            radioP1.setSelected(false);
+        } else{
+            radioL1.setSelected(false);
+            radioP1.setSelected(true);
+        }
+        
+        showDataMapel(guru);
+    }//GEN-LAST:event_teacherTableMouseClicked
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        Guru guru = new Guru().getById(txtNIP.getText());
+        guru.insertMapel(cbMapel1.getSelectedItem().toString());
+        
+        guru = new Guru().getById(txtNIP.getText());
+        showDataMapel(guru);
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void delGuruMapelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delGuruMapelActionPerformed
+        Guru guru = new Guru().getById(txtNIP.getText());
+        DefaultListModel model = (DefaultListModel)listMapel.getModel();
+        
+        int i = listMapel.getSelectedIndex();
+        String kode_mapel = model.getElementAt(i).toString();
+        
+        guru.delMapel(kode_mapel);
+        
+        guru = new Guru().getById(txtNIP.getText());
+        showDataMapel(guru);
+    }//GEN-LAST:event_delGuruMapelActionPerformed
+
+    private void cbMapel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMapel1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbMapel1ActionPerformed
+
+    private void DelTeacherBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelTeacherBtnActionPerformed
+        DefaultTableModel model = (DefaultTableModel)teacherTable.getModel();
+        
+        int row = teacherTable.getSelectedRow();
+        String nip = model.getValueAt(row, 0).toString();
+        Guru guru = new Guru().getById(nip);
+        guru.delete();
+        
+        resetForm3();
+        searchTeacher("");
+    }//GEN-LAST:event_DelTeacherBtnActionPerformed
+
+    private void listMapelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMapelMouseClicked
+
+    }//GEN-LAST:event_listMapelMouseClicked
+
+    public void showDataMapel(Guru guru){
+        DefaultListModel listmapel = new DefaultListModel();
+        listMapel.setModel(listmapel);
+        listmapel.removeAllElements();
+        
+        for (Pelajaran p : guru.getMapel()) {
+            listmapel.addElement(p.getIdMapel());
+        }
+    }
+    
     public void searchScore(String keyword){
         String[] col = {"NISN", "Mapel", "Nilai"};
         ArrayList<Nilai> nilai = new Nilai().search(keyword);
@@ -591,6 +959,21 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
             rowData[2] = n.getNilai();
             
             ((DefaultTableModel)scoreTable.getModel()).addRow(rowData);
+        }
+    }
+    
+    public void searchTeacher(String keyword){
+        String[] col = {"NIP", "Nama"};
+        ArrayList<Guru> listGuru = new Guru().search(keyword);
+        Object rowData[] = new Object[2];
+        
+        teacherTable.setModel(new DefaultTableModel(new Object[][] {}, col));
+        
+        for(Guru g : listGuru){
+            rowData[0] = g.getId();
+            rowData[1] = g.getName();
+            
+            ((DefaultTableModel)teacherTable.getModel()).addRow(rowData);
         }
     }
     
@@ -649,6 +1032,22 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
         cbMapel.setSelectedItem("BI");
         scoreTable.clearSelection();
     }
+    
+    public void resetForm3(){
+        txtNIP.setText("");
+        txtNama1.setText("");
+        txtAlamat1.setText("");
+        txtTglLahir1.setText("");
+        
+        radioL1.setSelected(false);
+        radioP1.setSelected(false);
+        teacherTable.clearSelection();
+       
+//        DefaultListModel listmapel = (DefaultListModel) listMapel.getModel();
+        DefaultListModel listmapel = new DefaultListModel();
+        listMapel.setModel(listmapel);
+        listmapel.removeAllElements();
+    }
 
     /**
      * @param args the command line arguments
@@ -686,14 +1085,25 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DelTeacherBtn;
+    private javax.swing.JButton addButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cb1;
     private javax.swing.JComboBox<String> cbMapel;
+    private javax.swing.JComboBox<String> cbMapel1;
+    private javax.swing.JButton delGuruMapel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -706,27 +1116,41 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JList<String> listMapel;
     private javax.swing.JRadioButton radioL;
+    private javax.swing.JRadioButton radioL1;
     private javax.swing.JRadioButton radioP;
+    private javax.swing.JRadioButton radioP1;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton saveButton1;
     private javax.swing.JButton saveButton2;
     private javax.swing.JTable scoreTable;
     private javax.swing.JButton searchButton;
+    private javax.swing.JButton searchButton1;
     private javax.swing.JButton searchButton2;
     private javax.swing.JTable studentTable;
+    private javax.swing.JTable teacherTable;
     private javax.swing.JTextField txtAlamat;
+    private javax.swing.JTextField txtAlamat1;
     private javax.swing.JTextField txtKelas;
+    private javax.swing.JTextField txtNIP;
     private javax.swing.JTextField txtNISN;
     private javax.swing.JTextField txtNISN2;
     private javax.swing.JTextField txtNama;
+    private javax.swing.JTextField txtNama1;
     private javax.swing.JTextField txtNilai;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtSearch1;
     private javax.swing.JTextField txtSearch2;
     private javax.swing.JTextField txtTglLahir;
+    private javax.swing.JTextField txtTglLahir1;
     // End of variables declaration//GEN-END:variables
 }
