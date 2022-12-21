@@ -7,6 +7,7 @@ import backend.*;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -730,22 +731,28 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     }//GEN-LAST:event_radioPActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        Siswa siswa = new Siswa();
-        siswa.setId(txtNISN.getText());
-        siswa.setName(txtNama.getText());
-        siswa.setKelas(txtKelas.getText());
-        siswa.setAddress(txtAlamat.getText());
-        siswa.setBirthDate(txtTglLahir.getText());
-        if(radioL.isSelected()) siswa.setGender('L');
-        else siswa.setGender('P');
-        
-        if(studentTable.getSelectionModel().isSelectionEmpty()){
-            siswa.save();
+        if(txtNISN.getText().length() > 10){
+            JOptionPane.showMessageDialog(null, "Digit angka kelebihan!");
         } else {
-            siswa.update();
-        }
+            Siswa siswa = new Siswa();
+            siswa.setId(txtNISN.getText());
+            siswa.setName(txtNama.getText());
+            siswa.setKelas(txtKelas.getText());
+            siswa.setAddress(txtAlamat.getText());
+            siswa.setBirthDate(txtTglLahir.getText());
+            if(radioL.isSelected()) siswa.setGender('L');
+            else siswa.setGender('P');
+        
+            if(studentTable.getSelectionModel().isSelectionEmpty()){
+                siswa.save();
+            } else {
+                siswa.update();
+            }
 
-        showData();
+            showData();
+        }
+        
+        
         resetForm();
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -847,20 +854,26 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
     }//GEN-LAST:event_radioP1ActionPerformed
 
     private void saveButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButton1ActionPerformed
-        Guru guru = new Guru();
-        guru.setId(txtNIP.getText());
-        guru.setName(txtNama1.getText());
-        guru.setAddress(txtAlamat1.getText());
-        guru.setBirthDate(txtTglLahir1.getText());
-        if(radioL1.isSelected()) guru.setGender('L');
-        else guru.setGender('P');
+        if(txtNIP.getText().length() > 18){
+            JOptionPane.showMessageDialog(null, "Digit angka kelebihan!");
+        } else{
+            Guru guru = new Guru();
+            guru.setId(txtNIP.getText());
+            guru.setName(txtNama1.getText());
+            guru.setAddress(txtAlamat1.getText());
+            guru.setBirthDate(txtTglLahir1.getText());
+            if(radioL1.isSelected()) guru.setGender('L');
+            else guru.setGender('P');
         
-        if(teacherTable.getSelectionModel().isSelectionEmpty()){
-            guru.save();
-        } else {
-            guru.update();
+            if(teacherTable.getSelectionModel().isSelectionEmpty()){
+                guru.save();
+            } else {
+                guru.update();
+            }
+            searchTeacher("");
         }
-        searchTeacher("");
+        
+        
         resetForm3();
     }//GEN-LAST:event_saveButton1ActionPerformed
 
