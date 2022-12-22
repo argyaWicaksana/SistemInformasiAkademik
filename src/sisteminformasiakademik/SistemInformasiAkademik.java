@@ -740,7 +740,11 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
         else siswa.setGender('P');
         
         if(studentTable.getSelectionModel().isSelectionEmpty()){
-            siswa.save();
+            if(siswa.isDuplicate()){
+                
+            }else{
+                siswa.save();
+            }
         } else {
             siswa.update();
         }

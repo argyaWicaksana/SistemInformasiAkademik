@@ -22,12 +22,32 @@ public class Siswa extends Person {
     }
     
     public void save(){
-        String sql = "INSERT INTO siswa VALUES ('"+getId()+"', '"+getName()+"', '"+getAddress()+"', '"+getGender()+"', "
+        if(isDuplicate()){
+            update();
+        } else{
+            String sql = "INSERT INTO siswa VALUES ('"+getId()+"', '"+getName()+"', '"+getAddress()+"', '"+getGender()+"', "
                 + "'"+getBirthDate()+"', '"+getKelas()+"')";
-        DBHelper.insertQueryGetId(sql);
+            DBHelper.insertQueryGetId(sql);
         
-        sql = "INSERT INTO nilai VALUES('BI', '"+getId()+"', 0)";
-        DBHelper.insertQueryGetId(sql);
+            sql = "INSERT INTO nilai VALUES('BI', '"+getId()+"', 0)";
+            DBHelper.insertQueryGetId(sql);
+        }
+        
+    }
+    
+    public boolean isDuplicate(){
+        boolean isDuplicate=false;
+        String sql = "SELECT COUNT(nisn) AS rowcount FROM nilai WHERE nisn='"+getId()+"'";
+        ResultSet rs = DBHelper.selectQuery(sql);
+
+        try {
+            rs.next();
+            isDuplicate = rs.getInt("rowcount") > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return isDuplicate;
     }
     
     public void delete(){
