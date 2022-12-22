@@ -94,6 +94,21 @@ public class Guru extends Person{
         DBHelper.insertQueryGetId(sql);
     }
     
+    public boolean isDuplicate(){
+        boolean isDuplicate=false;
+        String sql = "SELECT COUNT(nip) AS rowcount FROM guru WHERE nip='"+getId()+"'";
+        ResultSet rs = DBHelper.selectQuery(sql);
+
+        try {
+            rs.next();
+            isDuplicate = rs.getInt("rowcount") > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return isDuplicate;
+    }
+    
     public void update(){
         String sql = "UPDATE guru SET nip='"+getId()+"', nama='"+getName()+"', alamat='"+getAddress()+"', "
                 + "jk='"+getGender()+"', tgl_lahir='"+getBirthDate()+"' WHERE nip='"+getId()+"'";

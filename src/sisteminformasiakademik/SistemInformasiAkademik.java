@@ -744,7 +744,11 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
             else siswa.setGender('P');
         
             if(studentTable.getSelectionModel().isSelectionEmpty()){
-                siswa.save();
+                if(siswa.isDuplicate()){
+                    JOptionPane.showMessageDialog(null, "NISN sudah ada!");
+                } else{
+                    siswa.save();
+                }
             } else {
                 siswa.update();
             }
@@ -866,7 +870,9 @@ public class SistemInformasiAkademik extends javax.swing.JFrame {
             else guru.setGender('P');
         
             if(teacherTable.getSelectionModel().isSelectionEmpty()){
-                guru.save();
+                if(guru.isDuplicate()){
+                    JOptionPane.showMessageDialog(null, "NIP sudah ada!");
+                } else guru.save();
             } else {
                 guru.update();
             }
